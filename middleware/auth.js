@@ -23,7 +23,7 @@ async function auth(req, res, next) {
     
     catch (error) {
       console.log(error);
-      let verToken = jwt.verify(token, process.env.SECRET_KEY);
+      let verToken = jwt.verify(token, process.env.SECRET_KEY || 'Make sure not to use the same secret phrase in both places!');
       let mainUser = await user.findOne({
         _id: verToken,
         "tokens.token": token,

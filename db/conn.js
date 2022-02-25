@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const dburl = "mongodb://localhost:27017/mongotube"
-
+const dburl = "mongodb+srv://priyanshu:priyanshu@cluster0.e4hww.mongodb.net/radiance?retryWrites=true&w=majority"
 
 mongoose.connect(dburl, {  
         useNewUrlParser: true,
