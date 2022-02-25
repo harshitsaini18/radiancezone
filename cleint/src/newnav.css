@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700");
+
+
+/* by default include the background of the option for the home navigation */
+.tbbody {
+  color: #010101;
+  /* center in the viewport */
+  z-index:45551111111111;
+  display: grid;
+  place-items: center;
+  font-family: "Open Sans", sans-serif;
+  position:fixed;
+  bottom:0;
+  width:100vw;
+  /* transition for the change in bg color */
+  /* transition: background 0.2s ease-out; */
+}
+
+/* display the anchor link side by side  */
+.mynavbar {
+  display: flex;
+  background: #fff;
+  width:100%;
+  /* considerable whitespace surrounding the navigation's items */
+  padding: 2rem 3.15rem;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* remove default style and slightly separate the anchor links from one another */
+.mynavlink {
+  color: inherit;
+  text-decoration: none;
+  margin: 0 0.2rem;
+  /* display the div icon and span elements side by side, vertically aligned */
+  display: flex;
+  align-items: center;
+  /* include padding for the background applied on the active item */
+  padding:12.75px 15.25px;
+  border-radius: 30px;
+  /* position relative for the pseudo element */
+  position: relative;
+  /* custom properties for the colors picked up by the elements when clicked (and updated for each link in the script) */
+  --hover-bg: #5b37b720;
+  --hover-c: #5b37b7;
+}
+
+/* include considerable negative margin to have the div icon overlapping with the span element */
+.mynavlink div {
+  margin-right: -2.5rem;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  /* transition for the change in margin */
+  transition: margin 0.2s ease-out;
+}
+/* by default hide the span element */
+.mynavlink span {
+  opacity: 0;
+  visibility: hidden;
+  font-size: 0.9rem;
+  margin-left: 0;
+}
+/* include with .mynavlink pseudo element relative to the anchor link .mynavlink circle, with .mynavlink fixed with and height */
+.mynavlink:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  /* positioned to the left of the anchor link and scaled to 0 */
+  transform: translate(0%, -50%) scale(0);
+  visibility: visible;
+  opacity: 1;
+}
+.active{
+  border:none !important;
+}
+/* when active */
+/* specify the colors dictated by the custom properties */
+.mynavlink.active {
+  background: var(--hover-bg) !important;
+  color: var(--hover-c) !important;
+}
+/* using the color specified by the then updated custom property show the circle of the pseudo element increasing its size and highlighting it momentarily */
+.mynavlink.active:before {
+  background: var(--hover-c)  !important;
+  opacity: 0  !important;
+  visibility: hidden  !important;
+  transform: translate(0%, -50%) scale(2)  !important;
+  /* transition only when the class is applied */
+  transition: all 0.4s ease-out  !important;
+}
+/* remove the margin applied to the div to make it overlay atop the anchor link */
+.mynavlink.active div {
+  margin-right: 0 !important;
+}
+/* show the span element */
+.mynavlink.active span {
+  visibility: visible  !important;
+  opacity: 1  !important;
+  transition: all 0.2s ease-out !important;
+}
+/* on smaller viewports show the navigation bar on the side, attached to the left of the screen */
+@media (max-width: 500px) {
+  .mynavbar {
+    flex-direction: row;
+    justify-self: start;
+    border-radius: 0 30px 30px 0;
+    padding: 0rem 1.15rem 0rem 1.25rem;
+  }
+  /* change the margin separating the anchor link elements now dividing the elements vertically */
+  .mynavbar .mynavlink {
+    margin: 0.5rem 5px;
+  }
+  /* remove the negative margin from the div elements, as the width is to be taken in full */
+  .mynavbar div {
+    margin: 0;
+  }
+}
