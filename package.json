@@ -1,7 +1,6 @@
 {
   "name": "nodesrc",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +23,7 @@
     "mongoose": "^6.1.7",
     "node-msoffice-pdf": "0.0.7",
     "pdf-excel-generator": "^1.0.4"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
