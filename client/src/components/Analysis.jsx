@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import Nav from './Nav'
-import PDF from './PDF'
-import GPD from './GPD'
-import ReactToPdf from 'react-to-pdf'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-// import { PDFExport } from '@progress/kendo-react-pdf'
-import Spinner from './Spinner'
 import { useNavigate } from 'react-router-dom'
 
-// import NewNav from "./NewNav";
 
 const Analysis = () => {
   const [Data, setData] = useState({})
@@ -166,45 +159,6 @@ const Analysis = () => {
     ],
   }
   // ~~~~~~~~~~~~~~Pie Chart~~~~~~~~~~~~~~~~//
-
-  // let pcolor;
-  // let ccolor;
-  // let mcolor;
-
-  // var x = finalData.physics.marks.length;
-  // var y = finalData.chemistry.marks.length;
-  // var z = finalData.maths.marks.length;
-  // if (x > y && x > z) {
-  //   if (y > z) {
-  //     pcolor = "#38FF74";
-  //     ccolor = "#309EFF";
-  //     mcolor = chartColors.darkRed;
-  //   } else {
-  //     pcolor = "#38FF74";
-  //     ccolor = chartColors.darkRed;
-  //     mcolor = "#309EFF";
-  //   }
-  // } else if (y > x && y > z) {
-  //   if (x > z) {
-  //     pcolor = "#309EFF";
-  //     ccolor = "#38FF74";
-  //     mcolor = chartColors.darkRed;
-  //   } else {
-  //     pcolor = chartColors.darkRed;
-  //     ccolor = "#38FF74";
-  //     mcolor = "#309EFF";
-  //   }
-  // } else if (z > x && z > y) {
-  //   if (x > y) {
-  //     pcolor = "#309EFF";
-  //     ccolor = chartColors.darkRed;
-  //     mcolor = "#38FF74";
-  //   } else {
-  //     pcolor = chartColors.darkRed;
-  //     ccolor = "#309EFF";
-  //     mcolor = "#38FF74";
-  //   }
-  // }
 
   let pieOptions = {
     chart: {
@@ -412,11 +366,9 @@ const Analysis = () => {
   }
 
   console.log(option1)
-  const ref = React.createRef();
+  const ref = React.createRef()
 
-
-
-  return loading ? (
+  return (
     <>
       <Nav />
       <div style={{ backgroundColor: '#ebebeb', height: '316vh' }}>
@@ -526,75 +478,31 @@ const Analysis = () => {
           </div>
         </div>
         <div className="tablediv">
-          {/* <div style={{ display: 'none' }}>
-            <PDF data={testData} />
-          </div> */}
-          {/* <GPD downloadFileName={"testData "+Date.now().toLocaleString() } 
-          rootElementId="pdf" /> */}
-          {/* /////////////// */}
-
-
           <div className="container-fluid d-flex justify-content-center">
-                 <div className="row">
-                   <div id="ms-container">
-                     <label htmlFor="ms-download">
-                       <div className="ms-content">
-                         <div className="ms-content-inside">
-                           <input type="checkbox" id="ms-download" />
-                           <div className="ms-line-down-container">
-                             <div className="ms-line-down"  />
-                           </div>
-                           <div className="ms-line-point" onClick={()=>window.open("/data")}></div>
-
-                         </div>
-                       </div>
-                     </label>
-                   </div>
-                 </div>
-               </div>
-
-          {/* <div
-          style={{ display: 'none' }}
-            ref={ref}
-          >
-            <PDF data={testData} />
-          </div> */}
-          
-
-{/* 
-          <div>
-    <ReactToPdf targetRef={ref} filename="div-blue.pdf">
-        {({toPdf}) => (
-            <div className="container-fluid d-flex justify-content-center">
-                 <div className="row">
-                   <div id="ms-container">
-                     <label htmlFor="ms-download">
-                       <div className="ms-content">
-                         <div className="ms-content-inside">
-                           <input type="checkbox" id="ms-download" />
-                           <div className="ms-line-down-container">
-                             <div className="ms-line-down"  />
-                           </div>
-                           <div className="ms-line-point" onClick={toPdf}/>
-                         </div>
-                       </div>
-                     </label>
-                   </div>
-                 </div>
-               </div>
-        )}
-    </ReactToPdf>
-    <div ref={ref}>
-    <PDF data={testData} />
-    </div>
-</div> */}
+            <div className="row">
+              <div id="ms-container">
+                <label htmlFor="ms-download">
+                  <div className="ms-content">
+                    <div className="ms-content-inside">
+                      <input type="checkbox" id="ms-download" />
+                      <div className="ms-line-down-container">
+                        <div className="ms-line-down" />
+                      </div>
+                      <div
+                        className="ms-line-point"
+                        onClick={() => window.open('/data')}
+                      ></div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
 
           <br />
         </div>
       </div>
     </>
-  ) : (
-    <Spinner />
   )
 }
 export default Analysis

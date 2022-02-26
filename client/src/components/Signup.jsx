@@ -1,42 +1,38 @@
-import React, {  useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import GoogleLogin from 'react-google-login'
-import { useNavigate } from "react-router-dom";
-import Nav from "./Nav";
+import { useNavigate } from 'react-router-dom'
+import Nav from './Nav'
 
 const Signup = () => {
-  const history = useNavigate();
+  const history = useNavigate()
 
   async function getUserData() {
     try {
-      let res = await axios.get(`/submit`,{
-      header:{
-        Accept:"application/json",
-        "Content-Type":"application/json"
-      },
-      credentials:"include"
-    })
-    let user = res.data;
-    // setRootUser(user);
-    console.log(user);
+      let res = await axios.get(`/submit`, {
+        header: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
+      let user = res.data
+      // setRootUser(user);
+      console.log(user)
 
-    history("/",{replace:true});
-
+      history('/', { replace: true })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-    
-
   }
 
   useEffect(() => {
-    
-    getUserData();
-
-  }, []);
-  const authId = '175186966901-bgifj36o8m82hsh8349lh6jfkicn753e.apps.googleusercontent.com'
+    getUserData()
+  }, [])
+  const authId =
+    '175186966901-bgifj36o8m82hsh8349lh6jfkicn753e.apps.googleusercontent.com'
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -50,7 +46,7 @@ const Signup = () => {
     email: {
       error: false,
       success: false,
-    }, 
+    },
     password: {
       error: false,
       success: false,
@@ -77,13 +73,12 @@ const Signup = () => {
 
   function resSuccess(g) {
     console.log(g)
-    axios.post("/google",{token:g.tokenId})
-    .then(res =>{
-      console.log(res);
+    axios.post('/google', { token: g.tokenId }).then((res) => {
+      console.log(res)
     })
   }
   function resError(err) {
-    console.log(err);
+    console.log(err)
   }
 
   //                  ///////////////////////////////////////
@@ -99,7 +94,7 @@ const Signup = () => {
           success: validName(e.target.value),
           error: !validName(e.target.value),
         },
-      })  
+      })
     } else if (e.target.name == 'email') {
       setValidation({
         ...validation,
@@ -136,19 +131,19 @@ const Signup = () => {
               icon: 'warning',
               button: 'Ok',
             })
-          }else{
+          } else {
             new Swal({
-                title: 'Thank you for use our plateform',
-                text: 'Go to login page for login',
-                icon: 'success',
-                button: 'Ok',
-              })
-              history("/login");
-              setUser({
-                name: '',
-                email: '',
-                password: '',
-              })
+              title: 'Thank you for use our plateform',
+              text: 'Go to login page for login',
+              icon: 'success',
+              button: 'Ok',
+            })
+            history('/login')
+            setUser({
+              name: '',
+              email: '',
+              password: '',
+            })
           }
         })
         .catch(function (error) {
@@ -186,9 +181,8 @@ const Signup = () => {
   /////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~///////////////
   /////////////////////////////////////////////////////////////////////////////////
   return (
-
     <div>
-      <Nav/>
+      <Nav />
       <div className="iphones">
         <div className="iphone">
           <header className="header">
@@ -205,7 +199,11 @@ const Signup = () => {
                   <GoogleLogin
                     clientId={authId}
                     render={(renderProps) => (
-                      <a className="button button--full" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                      <a
+                        className="button button--full"
+                        onClick={renderProps.onClick}
+                        disabled={renderProps.disabled}
+                      >
                         <i className="icon fa-brands fa-google" />
                         <i
                           style={{ fontSize: '10px' }}

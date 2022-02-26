@@ -14,21 +14,6 @@ const Dppform = (props) => {
   })
 console.log(dpp);
   const PostData = (e) => {
-    // e.preventDefault()
-    // fetch('/submit', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'aplication/json',
-    //   },
-    //   body: JSON.stringify(dpp),
-    // })
-    // .then((res) => {
-    //   res.json()
-    //   console.log(res);
-    //   window.alert("Sucussfully submit")
-    // })
-    // .then((data) => {console.log(data)
-    //   })
 
      axios.post('/submit', dpp)
     .then(function (response) {
@@ -53,9 +38,7 @@ console.log(dpp);
       .catch(function (error) {
         console.log(error)
       })
-    // window.location.href = "http://localhost:3000/"
-    // window.alert("Sucussfully submit")
-    // navigate(-1)      
+         
   }
 
   let name, value
@@ -65,33 +48,10 @@ console.log(dpp);
     setDpp({ ...dpp, [name]: value })
   }
 
-  // const postData = async (e) =>{
-  //   e.preventDefault();
-  //   const {subject,marks,complete}= dpp;
-  //   const res = await fetch("/submit",{
-  //     method:"POST",
-  //     headers:{
-  //       "Content-type":"aplication/json"
-  //     },
-  //     body: JSON.stringify(
-  //       subject,marks,complete
-  //     )
-  //   });
-  //   const data = await res.json();
-  //   console.log(data);
-  //   if (data.status===422||!data) {
-  //     window.alert("invalid submit")
-  //     console.log("invalid submit")
-  //   } else {
-  //     window.alert("Sucussfully submit")
-  //     console.log("Sucussfully submit")
-  //     history.push("/")
-  //   }
-  // }
+ 
 
   return (
     <div>
-      <input value="dpp" name="typer" style={{display: 'none'}}/>
       <select
         id="dppSelect"
         name="subject"

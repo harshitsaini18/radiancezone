@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Logout from './Logout'
-import { Avatar,IconButton,Tooltip } from '@mui/material'
-import Swal from 'sweetalert2'
 const logo = require('./img/logo1.png')
 
 const Nav = () => {
